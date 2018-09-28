@@ -1,66 +1,104 @@
 {
-    "debug": true,
-    "process": {
-        "file_limit": 1000000,
-        "core_limit": 1000000000
+  "debug": true,
+  "process": {
+    "file_limit": 1000000,
+    "core_limit": 1000000000
+  },
+  "log": {
+    "path": "/var/log/trade/matchengine",
+    "flag": "fatal,error,warn,info,debug,trace",
+    "num": 10
+  },
+  "alert": {
+    "host": "matchengine",
+    "addr": "127.0.0.1:4444"
+  },
+  "svr": {
+    "bind": ["tcp@0.0.0.0:7316", "udp@0.0.0.0:7316"],
+    "buf_limit": 100,
+    "max_pkg_size": 10240,
+    "heartbeat_check": false
+  },
+  "cli": "tcp@127.0.0.1:7317",
+  "db_log": {
+    "host": "localhost",
+    "user": "user",
+    "pass": "pass",
+    "name": "trade_log"
+  },
+  "db_history": {
+    "host": "localhost",
+    "user": "user",
+    "pass": "pass",
+    "name": "trade_history"
+  },
+  "assets": [
+    {
+      "name": "ETH",
+      "prec_save": 16,
+      "prec_show": 8
     },
-    "log": {
-        "path": "/var/log/trade/matchengine",
-        "flag": "fatal,error,warn,info,debug,trace",
-        "num": 10
+    {
+      "name": "BTC",
+      "prec_save": 16,
+      "prec_show": 8
     },
-    "alert": {
-        "host": "matchengine",
-        "addr": "127.0.0.1:4444"
+
+    {
+      "name": "LTC",
+      "prec_save": 16,
+      "prec_show": 8
     },
-    "svr": {
-        "bind": [
-            "tcp@0.0.0.0:7316",
-            "udp@0.0.0.0:7316"
-        ],
-        "buf_limit": 100,
-        "max_pkg_size": 10240,
-        "heartbeat_check": false
+
+    {
+      "name": "DASH",
+      "prec_save": 16,
+      "prec_show": 8
     },
-    "cli": "tcp@127.0.0.1:7317",
-    "db_log": {
-        "host": "localhost",
-        "user": "user",
-        "pass": "pass",
-        "name": "trade_log"
+    {
+      "name": "XMR",
+      "prec_save": 16,
+      "prec_show": 8
     },
-    "db_history": {
-        "host": "localhost",
-        "user": "user",
-        "pass": "pass",
-        "name": "trade_history"
+    {
+      "name": "HOT",
+      "prec_save": 16,
+      "prec_show": 8
     },
-    "assets": [
-        {
-            "name": "RINKEBY",
-            "prec_save": 16,
-            "prec_show": 8
-        },{
-            "name": "TESTNET3",
-            "prec_save": 16,
-            "prec_show": 8
-        }
-    ],
-    "markets": [
-        {
-            "name": "TESTNET3RINKEBY",
-            "stock": {
-                "name": "RINKEBY",
-                "prec": 8
-            },
-            "money": {
-                "name": "TESTNET3",
-                "prec": 8
-            },
-        "min_amount":"0.00001"
-        }
-    ],
-    "brokers": "127.0.0.1:9092",
-    "slice_interval": 3600,
-    "slice_keeptime": 259200
+    {
+      "name": "EOS",
+      "prec_save": 16,
+      "prec_show": 8
+    }
+
+  ],
+  "markets": [
+    {
+      "name": "BTCETH",
+      "stock": {
+        "name": "BTC",
+        "prec": 8
+      },
+      "money": {
+        "name": "ETH",
+        "prec": 8
+      },
+      "min_amount": "0.00001"
+    },
+    {
+      "name": "ETHBTC",
+      "stock": {
+        "name": "ETH",
+        "prec": 8
+      },
+      "money": {
+        "name": "BTC",
+        "prec": 8
+      },
+      "min_amount": "0.00001"
+    }
+  ],
+  "brokers": "127.0.0.1:9092",
+  "slice_interval": 3600,
+  "slice_keeptime": 259200
 }
